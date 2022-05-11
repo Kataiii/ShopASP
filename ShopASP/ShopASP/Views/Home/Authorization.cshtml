@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewBag.Title = "Authorization";
+}
+
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="~/Content/Authorization.css" />
+    </head>
+    @section Header {
+    }
+    <body>
+        <div class="conteiner">
+            @using (Html.BeginForm("Authorization", "Home", FormMethod.Post))
+            {
+                <div class="conteiner__title">
+                    <h1>Sign in</h1>
+                </div>
+                
+                <p style="color: orangered;">@ViewBag.NotCorrect</p>
+                <p>Login:</p>
+                @Html.TextBox("login", null, new { @class = "form__textField", @placeholder = "+7(999)-999-99-99", @name= "login",@id= "login" })
+                <p>Password:</p>
+                @Html.Password("password", null, new { @class = "form__textField", @placeholder = "Password", @name = "password", @id = "password" })
+
+                <button class="button__submit" id="submit" type="submit" name="action" value="submit">SUBMIT</button>
+                <button class="button_show" type="submit" name="action" value="show">View products</button>
+                <p class="p_caption">If this is your first time here, let's <a href="@Url.Action("Registration","Home")">register</a></p>
+            }
+        </div>
+    </body>
+</html>
+

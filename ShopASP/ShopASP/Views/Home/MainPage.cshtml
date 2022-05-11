@@ -1,0 +1,25 @@
+﻿@*@using ShopASP.Models.Context.ModelsForDB
+    @model IEnumerable<ProductTest>*@
+@{
+    ViewBag.Title = "MainPage";
+}
+<html>
+<head>
+    <link href="~/Content/MainPage.css" type="text/css" />
+</head>
+<body>
+    <div class="conteiner__products">
+        @*@{
+        foreach (var productTest in Model)
+        {
+        <div class="card__product">
+            <img src="~/Resourses/photo.png" alt="@productTest.Name" />
+            <h2>@productTest.Name</h2>
+            <p>@productTest.Price</p>
+            <p>@productTest.Quantity</p>
+        </div>
+        }
+        }*@
+    </div>
+</body>
+</html>

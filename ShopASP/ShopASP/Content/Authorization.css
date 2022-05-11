@@ -1,0 +1,109 @@
+﻿*{
+    margin: 0;
+    padding: 0;
+    box-sizing:border-box;
+}
+
+body{
+    background-color: #F3F3F3;
+}
+
+.conteiner {
+    display: block;
+    width: 60%;
+    padding: 2%;
+    background-color: #F3F3F3;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.25);
+    margin:5% auto;
+}
+
+.conteiner-inner{
+    width:100%;
+    display:flex;
+    justify-content:space-between;
+}
+
+.conteiner_div{
+    width:40%;
+}
+
+.conteiner__title {
+    width: 60%;
+    margin-bottom: 2%;
+}
+
+h1 {
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 32px;
+    font-weight: 800;
+    background: linear-gradient(270deg, #000F6D 14.51%, #1944A9 56.33%, #294C99 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    border-bottom: #1944A9 3px solid;
+}
+
+h2 {
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 28px;
+    font-weight: 500;
+    background: linear-gradient(270deg, #000F6D 14.51%, #1944A9 56.33%, #294C99 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    padding-left:2%;
+}
+
+input {
+    padding-left: 1%;
+    width: 80%;
+    height: 42px;
+    margin-bottom: 1%;
+    background-color: #F3F3F3;
+    font-size: 18px;
+    border: 2px solid #363636;
+    font-weight: 100;
+    font-family: 'Titillium Web', sans-serif;
+}
+
+.button__submit {
+    width: 30%;
+    margin: 3% 0 3% 70%;
+    background: linear-gradient(270deg, #000F6D 14.51%, #1944A9 56.33%, #294C99 100%);
+    border: 2px solid #1944A9;
+    color: #F3F3F3;
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 32px;
+}
+
+.button_show {
+    width: 30%;
+    margin: 0% 0 3% 70%;
+    border: 2px solid #1944A9;
+    color: #1944A9;
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 32px;
+}
+
+p {
+    margin-top: 2%;
+    font-size: 18px;
+    margin-bottom: 0.5%;
+    color: #717171;
+    font-family: monospace;
+    font-weight: 300;
+}
+
+.p_caption {
+    text-align: center;
+    margin-top: 4%;
+    color: #717171;
+    font-family: monospace;
+    font-size: 13px;
+}
+
+a {
+    text-decoration: none;
+    color: #1944A9;
+    text-transform: uppercase;
+}
+
+

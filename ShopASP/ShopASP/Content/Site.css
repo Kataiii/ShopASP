@@ -1,0 +1,67 @@
+﻿*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background-color: #F3F3F3;
+}
+
+header {
+    width: 100%;
+    padding: 1%;
+    position: fixed;
+    background: linear-gradient(270deg, #000F6D 14.51%, #1944A9 56.33%, #294C99 100%);
+}
+
+.header__conteiner {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.header__logo {
+    font-size: 2vw;
+    font-weight: 800;
+    margin: 0 2%;
+    font-family: 'Titillium Web', sans-serif;
+    color: #F3F3F3;
+    text-transform: uppercase;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.conteiner__account {
+    width:8%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.conteiner__icon {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.button-icon {
+    width: 32px;
+    margin: 0 auto;
+    display: block;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+#basket{
+    margin-left:0;
+}
+
+.title-icon {
+    font-size: 0.8vw;
+    color: #F3F3F3;
+    font-family: 'Titillium Web', sans-serif;
+    text-align: center;
+}

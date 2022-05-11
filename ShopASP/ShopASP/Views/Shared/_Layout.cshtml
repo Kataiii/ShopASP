@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Koulen&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300&display=swap" rel="stylesheet">
+</head>
+<body>
+    @if (IsSectionDefined("Header"))
+    {
+        @RenderSection("Header")
+    }
+    else
+    {
+        <header>
+            <div class="header__conteiner">
+                <button class="header__logo">Shop</button>
+                <div class="conteiner__account">
+                    <div class="conteiner__icon">
+                        <button class="button-icon" id="basket"><img src="~/Resourses/Basket.svg" /></button>
+                        <p class="title-icon">Корзина</p>
+                    </div>
+                    <div class="conteiner__icon">
+                        <button class="button-icon" id="account"><img src="~/Resourses/Account.svg" /></button>
+                        <p class="title-icon">Профиль</p>
+                    </div>
+                </div>
+            </div>
+        </header>
+    }
+        @RenderBody()
+
+    </body>
+</html>

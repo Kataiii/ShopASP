@@ -1,0 +1,70 @@
+﻿
+@{
+    ViewBag.Title = "Registration";
+}
+
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="~/Content/Authorization.css" />
+</head>
+@section Header {
+}
+<body>
+    <div class="conteiner" style="margin: 1% auto; width:80%;padding:1%;">
+        @using (Html.BeginForm("Authorization", "Home", FormMethod.Post))
+        {
+            <div class="conteiner__title">
+                <h1>Registration</h1>
+            </div>
+
+            <h2>Personal information</h2>
+            <div class="conteiner-inner">
+                <div class="conteiner_div">
+                    <p>Surname</p>
+                    @Html.TextBox("surname", null, new { @class = "form__textField", @placeholder = "Surname", @name = "surname", @id = "surname", @style = "width:100%" })
+                </div>
+
+                <div class="conteiner_div">
+                    <p>Firstname</p>
+                    @Html.TextBox("firstname", null, new { @class = "form__textField", @placeholder = "Firstname", @name = "firstname", @id = "firstname", @style = "width:100%" })
+                </div>
+
+            </div>
+            <div class="conteiner_div">
+                <p>Patronymic</p>
+                @Html.TextBox("patronymic", null, new { @class = "form__textField", @placeholder = "Patronymic", @name = "patronymic", @id = "patronymic", @style = "width:100%" })
+            </div>
+
+            <h2>Contact information</h2>
+            <div class="conteiner-inner">
+                <div class="conteiner_div">
+                    <p>Phone:</p>
+                    @Html.TextBox("login", null, new { @class = "form__textField", @placeholder = "+7(999)-999-99-99", @name = "login", @id = "login", @style = "width:100%" })
+                </div>
+                <div class="conteiner_div">
+                    <p>Email:</p>
+                    @Html.TextBox("email", null, new { @class = "form__textField", @placeholder = "user@mail.ru", @name = "email", @id = "email", @style = "width:100%" })
+                </div>
+            </div>
+
+            <h2>Password</h2>
+            <div class="conteiner-inner">
+                <div class="conteiner_div">
+                    <p>Password:</p>
+                    @Html.Password("password", null, new { @class = "form__textField", @placeholder = "Password", @name = "password", @id = "password", @style = "width:100%" })
+                </div>
+                <div class="conteiner_div">
+                    <p>Repeat the password:</p>
+                    @Html.Password("repeat_password", null, new { @class = "form__textField", @placeholder = "Password", @name = "repeat_password", @id = "repeat_password", @style = "width:100%" })
+                </div>
+            </div>
+
+            
+            
+
+            <button class="button__submit" id="submit" type="submit" name="action" value="add" disabled>SUBMIT</button>
+        }
+    </div>
+    <script src="~/Scrits/ValidationRegistration.js"></script>
+</body>
+</html>
