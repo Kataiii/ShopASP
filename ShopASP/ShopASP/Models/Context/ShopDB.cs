@@ -12,5 +12,7 @@ namespace ShopASP.Models.Context
         public DbSet<Product> Products { get; set; }
         public DbSet<Person> People { get; set; }
         public DbSet<Order> Orders { get; set; }
+
+        public System.Data.Entity.DbSet<ShopASP.Models.ProductForPerson> ProductForPersons { get; set; }
     }
 }

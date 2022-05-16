@@ -173,6 +173,10 @@
     <Content Include="Views\PersonAccount\Profile.cshtml" />
     <Content Include="Views\PersonAccount\Personal_information.cshtml" />
     <Content Include="Views\PersonAccount\AllOrdersPerson.cshtml" />
+    <Content Include="Views\PersonAccount\Cart.cshtml" />
+    <Content Include="Views\PersonAccount\ReduceQuantityProductCart.cshtml" />
+    <Content Include="Views\PersonAccount\AddQuantityProductCart.cshtml" />
+    <Content Include="Views\PersonAccount\Messege.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
