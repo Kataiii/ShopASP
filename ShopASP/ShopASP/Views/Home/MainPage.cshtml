@@ -8,6 +8,7 @@
 <head>
     <link href="~/Content/MainPage.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/cardProduct.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/EdidtingQuantity.css" />
 </head>
 <body>
     @section Header{
@@ -29,14 +30,14 @@
 
                 <div class="conteiner__account">
                     <div class="conteiner__icon">
-                        <button class="button-icon" id="cart"><img src="~/Resourses/Basket.svg" /></button>
+                        <button class="button-icon" id="cart" style="margin:0;"><img src="~/Resourses/Basket.svg" /></button>
                         <p id="cart" class="title-icon">Корзина</p>
                     </div>
                     <p id="counter"></p>
                     <div class="conteiner__icon">
                         @using(Html.BeginForm("Profile", "PersonAccount", FormMethod.Get))
                         {
-                            <button class="button-icon" id="account"><img src="~/Resourses/Account.svg" /></button>
+                            <button class="button-icon" id="account" ><img src="~/Resourses/Account.svg" style="margin:0 40%;"/></button>
                         }
                         <p class="title-icon">Профиль</p>
                     </div>
@@ -59,7 +60,9 @@
                             <p class="product_cost">@Html.DisplayFor(modelItem => item.Price)</p>
                             @if (item.Quantity == 0)
                             {
-                                <p>Sorry, this product will be on sale soon</p>
+                                <div class="conteiner-not_product">
+                                    <p class="conteiner_title-not_product">Sorry, this product will be on sale soon</p>
+                                </div>
                                 <button class="not_add_to_cart" id="haven't_product'" name="action" value="authorisation"
                                         disabled>
                                     Add to cart
@@ -77,14 +80,14 @@
                                 }
                                 else
                                 {
-                                    <div id="div_button_@item.Id">
+                                    <div id="div_button_@item.Id" style="width:100%;">
                                         @using (Ajax.BeginForm("AddProductInSession", "PersonAccount", new AjaxOptions
                                         {
                                             UpdateTargetId = "div_button_" + item.Id,
                                             InsertionMode = InsertionMode.Replace,
                                             HttpMethod = "GET",
                                             Url = "https://localhost:44319/PersonAccount/AddProductInSession"
-                                        }))
+                                        }, new { @class = "form" }))
                                         {
                                             <input type="hidden" class="hidden_filds" name="action"
                                                    value="add_to_cart"/>

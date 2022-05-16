@@ -43,3 +43,23 @@
     margin-bottom: 5%;
 }
 
+.button-inner{
+    width:100%;
+}
+
+.button_add_cart {
+    width: 40%;
+    margin-left: 60%;
+    font-size: 18px;
+    font-family: 'Titillium Web';
+    background-color: #1944A9;
+    border: 2px solid #1944A9;
+    color: #F3F3F3;
+}
+
+.button_add_cart:hover {
+    background-color: #0f307e;
+    border: 2px solid #0f307e;
+    color: #c2c2c2;
+}
+

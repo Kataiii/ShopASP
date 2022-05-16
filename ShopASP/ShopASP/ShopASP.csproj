@@ -115,6 +115,7 @@
     </Content>
     <Content Include="Content\Authorization.css" />
     <Content Include="Content\cardProduct.css" />
+    <Content Include="Content\EdidtingQuantity.css" />
     <Content Include="Content\MainPage.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Global.asax" />
@@ -164,13 +165,13 @@
     <Content Include="Views\Home\MainPage.cshtml" />
     <Content Include="Views\Home\Authorization.cshtml" />
     <Content Include="Views\Home\Registration.cshtml" />
-    <Content Include="Views\PersonAccount\Cart.cshtml" />
     <Content Include="Views\Home\FormProductForAdd.cshtml" />
     <Content Include="Views\PersonAccount\FormProductForUpdate.cshtml" />
     <Content Include="Views\PersonAccount\AddProductInSession.cshtml" />
     <Content Include="Views\PersonAccount\UpdateProductInSession.cshtml" />
     <Content Include="Views\PersonAccount\Profile.cshtml" />
     <Content Include="Views\PersonAccount\Personal_information.cshtml" />
+    <Content Include="Views\PersonAccount\AllOrdersPerson.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

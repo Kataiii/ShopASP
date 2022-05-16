@@ -12,16 +12,13 @@ namespace ShopASP.Controllers
     public class PersonAccountController : Controller
     {
         ShopDB db = new ShopDB();
+
         // GET: PersonAccount
         public ActionResult Profile()
         {
             return View(Session["user"]);
         }
 
-        public ActionResult Cart(List<ProductForPerson> productForPeople)
-        {
-            return View(productForPeople);
-        }
 
         [HttpGet]
         public ActionResult AddProductInSession(int id_product, int id_quantity)

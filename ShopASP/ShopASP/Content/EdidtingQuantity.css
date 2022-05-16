@@ -1,0 +1,73 @@
+﻿.button-inner{
+    width:100%;
+    display:flex;
+    flex-direction:row;
+    justify-content:flex-end;
+}
+
+form{
+    width:10%;
+}
+
+.form{
+    width:100%;
+}
+
+.button-quantity {
+    width: 100%;
+    font-size: 18px;
+    font-family: 'Titillium Web';
+    font-weight: bolder;
+    background-color: #1944A9;
+    color: #F3F3F3;
+    border: none;
+}
+
+.button-dissabled {
+    width: 100%;
+    font-size: 18px;
+    font-family: 'Titillium Web';
+    font-weight: bolder;
+    background-color: #0f2b6d;
+    color: #b7b7b7;
+    border: none;
+}
+
+.input_quantity {
+    width: 15%;
+    font-family: monospace;
+    font-weight: 900;
+    color: #363636;
+    padding: 0 2%;
+}
+
+.not_add_to_cart {
+    width: 40%;
+    margin-left: 60%;
+    font-size: 18px;
+    font-family: 'Titillium Web';
+    background-color: #0f2b6d;
+    border: 2px solid #0f2b6d;
+    color: #b7b7b7;
+}
+
+.conteiner-not_product {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #23222280;
+}
+
+.conteiner_title-not_product {
+    display: block;
+    width: 80%;
+    margin: 40% auto;
+    text-align: center;
+    font-size: 24px;
+    font-family: 'Titillium Web';
+    font-weight: 900;
+    color: #cc1919;
+    background-color: #edededc2;
+}
