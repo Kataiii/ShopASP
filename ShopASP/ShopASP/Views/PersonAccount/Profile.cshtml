@@ -2,49 +2,58 @@
 @{
     ViewBag.Title = "Profile";
 }
-
-<div class="conteiner">
-    <h2>Profile</h2>
-    <div class="conteiner-inner">
-        <div>
-            <div class="conteiner_img">
-                <img src="~/Resourses/photo.png" alt="photo_user" />
-            </div>
-            <h1>@Model.Firstname</h1>
+<head>
+    <link rel="stylesheet" type="text/css" href="~/Content/Profile.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="conteiner">
+        
+        <div class="conteiner-inner">
+                <div class="conteiner_img">
+                    <img src="~/Resourses/photo.png" alt="photo_user" />
+                </div>
+                <div class="conteiner_title">
+                    <h2>Profile</h2>
+                    <h1>@Model.Firstname</h1>
+                </div>
+                
         </div>
-    </div>
-    <div class="conteiner_info">
-        <div class="tab">
-            @Ajax.ActionLink("Personal information", "GetPersonalInformation", "PersonAccount", new AjaxOptions
-            {
-               UpdateTargetId = "conteiner_info-inner",
-               InsertionMode = InsertionMode.Replace,
-               HttpMethod = "GET"
-           })
-            @Ajax.ActionLink("All orders", "GetOrdersInformation", "PersonAccount", new AjaxOptions
-            {
-                UpdateTargetId = "conteiner_info-inner",
-                InsertionMode = InsertionMode.Replace,
-                HttpMethod = "GET"
-            })
-            @Ajax.ActionLink("Cart", "MakingAnOrder", "PersonalAccount", new AjaxOptions
-           {
-                UpdateTargetId = "conteiner_info-inner",
-                InsertionMode = InsertionMode.Replace,
-                HttpMethod = "GET"
-           })
-            @if (Model.IsAdmin == true)
-            {
-                @Ajax.ActionLink("Admin panel", "ShowAdminPanel", "PersonalAccount", new AjaxOptions
+        <div class="conteiner_info">
+            <div class="tab">
+                @Ajax.ActionLink("Personal information", "GetPersonalInformation", "PersonAccount", new AjaxOptions
+                {
+                   UpdateTargetId = "conteiner_info-inner",
+                   InsertionMode = InsertionMode.Replace,
+                   HttpMethod = "GET"
+               })
+                @Ajax.ActionLink("All orders", "GetOrdersInformation", "PersonAccount", new AjaxOptions
                 {
                     UpdateTargetId = "conteiner_info-inner",
                     InsertionMode = InsertionMode.Replace,
                     HttpMethod = "GET"
                 })
-            }
-        </div>
-        <div id="conteiner_info-inner">
-            <p>Select the tab</p>
+                @Ajax.ActionLink("Cart", "MakingAnOrder", "PersonalAccount", new AjaxOptions
+               {
+                    UpdateTargetId = "conteiner_info-inner",
+                    InsertionMode = InsertionMode.Replace,
+                    HttpMethod = "GET"
+               })
+                @if (Model.IsAdmin == true)
+                {
+                    @Ajax.ActionLink("Admin panel", "ShowAdminPanel", "PersonalAccount", new AjaxOptions
+                    {
+                        UpdateTargetId = "conteiner_info-inner",
+                        InsertionMode = InsertionMode.Replace,
+                        HttpMethod = "GET"
+                    })
+                }
+            </div>
+            <div id="conteiner_info-inner">
+                <p class="text_info">Select the tab</p>
+            </div>
         </div>
     </div>
-</div>
+</body>

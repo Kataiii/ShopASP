@@ -117,6 +117,7 @@
     <Content Include="Content\cardProduct.css" />
     <Content Include="Content\EdidtingQuantity.css" />
     <Content Include="Content\MainPage.css" />
+    <Content Include="Content\Profile.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Global.asax" />
     <None Include="Scripts\jquery-1.8.0.intellisense.js" />
