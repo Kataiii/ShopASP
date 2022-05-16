@@ -1,0 +1,45 @@
+﻿.conteiner__products {
+    width: 96%;
+    margin: 7% auto 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+.products {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.card__product {
+    width: 300px;
+    padding: 10px;
+    margin: 0 2% 72px;
+    position: relative;
+    box-shadow: 0px 0px 27px -5px rgba(0, 0, 0, 0.25);
+}
+
+.product__cover-inner {
+    width: 270px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.card__product_inner-img{
+    width:100%;
+}
+
+.product_total {
+    font-family: 'Titillium Web';
+    font-weight: bold;
+    color: #1944A9;
+    font-size: 24px;
+}
+
+.product_cost {
+    font-size: 16px;
+    font-family: monospace;
+    color: #5c5c5cd1;
+    margin-bottom: 5%;
+}
+

@@ -1,2 +1,17 @@
-﻿body {
+﻿form {
+    width: 100%;
+    display: flex;
+}
+
+#button__log-in {
+    width: 10%;
+    border-radius: 60px;
+    border: none;
+    background-color: #eec405;
+    font-size: 24px;
+    font-family: 'Titillium Web';
+    height: 42px;
+    margin: auto;
+    margin-left: 85%;
+    color: #0944A9;
 }

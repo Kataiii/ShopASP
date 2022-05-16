@@ -1,5 +1,6 @@
 ﻿using ShopASP.Models.Context;
 using ShopASP.Models.Context.ModelsForDB;
+using ShopASP.Models.ModelsForPages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,10 +13,11 @@ namespace ShopASP.Controllers
     {
         ShopDB db = new ShopDB();
         // GET: Home
-        public ActionResult MainPage()
+        public ActionResult MainPage(List<Product> products)
         {
-            //var products = db.ProductsTest.ToList();
-            return View();
+            Person person = (Person)Session["user"];
+            ViewBag.PersonName = person.Firstname;
+            return View(products);
         }
 
         [HttpGet]
@@ -30,20 +32,28 @@ namespace ShopASP.Controllers
             return View();
         }
 
+        public ActionResult FormProductForAdd(Product product)
+        {
+            return View(product);
+        }
+
         [HttpPost]
         public ActionResult Authorization(string action,List<string> Strings)
         {
             switch (action)
             {
                 case "submit":
+                    bool isSessionNew = Session.IsNewSession;
                     Person person = db.People.Find(Request.Form["login"].ToString());
                     if (person == null) return Authorization("Incorrect password or login. Please try again.");
                     if (person.Password != Request.Form["password"].ToString()) 
                         return Authorization("Incorrect password or login. Please try again.");
-                    return View("MainPage");
+                    Session["user"] = person;
+                    return View("MainPage", db.Products.ToList());
                 case "show":
-                    return Authorization("");
+                    return View("MainPage", db.Products.ToList());
                 case "add":
+                    _ = Session.IsNewSession;
                     Person personadd = new Person()
                     {
                         Phone = Request.Form["login"],
@@ -56,9 +66,20 @@ namespace ShopASP.Controllers
                     };
                     db.People.Add(personadd);
                     db.SaveChanges();
-                    return View("MainPage");
+                    Session["user"] = personadd;
+                    return View("MainPage", db.Products.ToList());
+                case "log_in":
+                    return Authorization("");
+                case "authorisation":
+                    return Authorization("I'm sorry, but you have to log in to order");
             }
             return Authorization("");
+        }
+
+        public Person GetPersonFromSession()
+        {
+            var person = Session["user"];
+            return (Person)person;
         }
     }
 }

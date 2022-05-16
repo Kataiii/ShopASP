@@ -1,0 +1,46 @@
+﻿@model ShopASP.Models.ProductForPartialView
+<div class="button-inner" id="@Model.Id">
+    @using (Ajax.BeginForm("ReduceQuantityProductInSession", "PersonAccount", new AjaxOptions
+    {
+        UpdateTargetId = "div_button_" + @Model.Id,
+        InsertionMode = InsertionMode.Replace,
+        HttpMethod = "GET",
+        Url = "https://localhost:44319/PersonAccount/ReduceQuantityProductInSession"
+    }))
+    {
+        <input type="hidden" class="hidden_filds" name="id_product"
+               value="@Model.Id">
+        <input type="hidden" class="hidden_filds" name="id_quantity" value="@Model.Quantity">
+
+        if (Model.Quantity == 1)
+        {
+            <button type="submit" name="action" value="reduce_quantity" disabled>-</button>
+        }
+        else
+        {
+            <button type="submit" name="action" value="reduce_quantity">-</button>
+        }
+    }
+    <input type="text" id="value_quantity" value="@Model.Quantity">
+    @using (Ajax.BeginForm("AddQuantityProductInSession", "PersonAccount", new AjaxOptions
+    {
+        UpdateTargetId = "div_button_" + @Model.Id,
+        InsertionMode = InsertionMode.Replace,
+        HttpMethod = "GET",
+        Url = "https://localhost:44319/PersonAccount/AddQuantityProductInSession"
+    }))
+    {
+        <input type="hidden" class="hidden_filds" name="id_product"
+               value="@Model.Id">
+        <input type="hidden" class="hidden_filds" name="id_quantity" value="@Model.Quantity">
+        if (Model.QuantityMax == Model.Quantity)
+        {
+            <button name="action" value="add_quantity" disabled>+</button>
+        }
+        else
+        {
+            <button name="action" type="submit" value="add_quantity">+</button>
+        }
+
+    }
+</div>

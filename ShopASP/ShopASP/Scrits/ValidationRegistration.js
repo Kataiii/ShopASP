@@ -147,8 +147,12 @@ function check() {
     let flag = 0;
     for (let value of map.values()) {
         if (value == false) flag = 1;
+        button.classList.add('dis');
     }
-    if (flag == 0) button.removeAttribute("disabled");
+    if (flag == 0) {
+        button.classList.remove('dis');
+        button.removeAttribute("disabled");
+    }
 }
 
 function check_password(str1, str2) {

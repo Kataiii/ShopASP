@@ -9,7 +9,8 @@ namespace ShopASP.Models.Context
 {
     public class ShopDB:DbContext
     {
-        public DbSet<ProductTest> ProductsTest { get; set; }
+        public DbSet<Product> Products { get; set; }
         public DbSet<Person> People { get; set; }
+        public DbSet<Order> Orders { get; set; }
     }
 }

@@ -1,25 +1,108 @@
-﻿@*@using ShopASP.Models.Context.ModelsForDB
-    @model IEnumerable<ProductTest>*@
+﻿@model IEnumerable<ShopASP.Models.Context.ModelsForDB.Product>
+@*@using ShopASP.Models.ModelsForPages
+    @model PersonWithProducts*@
 @{
     ViewBag.Title = "MainPage";
 }
 <html>
 <head>
-    <link href="~/Content/MainPage.css" type="text/css" />
+    <link href="~/Content/MainPage.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/cardProduct.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
+    @section Header{
+        <header>
+            <div class="header__conteiner">
+                <button class="header__logo">Shop</button>
+                @if (Session["user"] == null)
+                {
+                    using (Html.BeginForm("Authorization", "Home", FormMethod.Post))
+                    {
+                        <button id="button__log-in" name="action" value="log_in"> Log in</button>
+                    }
+
+                }
+                else
+                {
+                    <p>@ViewBag.PersonName</p>
+                }
+
+                <div class="conteiner__account">
+                    <div class="conteiner__icon">
+                        <button class="button-icon" id="cart"><img src="~/Resourses/Basket.svg" /></button>
+                        <p id="cart" class="title-icon">Корзина</p>
+                    </div>
+                    <p id="counter"></p>
+                    <div class="conteiner__icon">
+                        @using(Html.BeginForm("Profile", "PersonAccount", FormMethod.Get))
+                        {
+                            <button class="button-icon" id="account"><img src="~/Resourses/Account.svg" /></button>
+                        }
+                        <p class="title-icon">Профиль</p>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+    }
     <div class="conteiner__products">
-        @*@{
-        foreach (var productTest in Model)
-        {
-        <div class="card__product">
-            <img src="~/Resourses/photo.png" alt="@productTest.Name" />
-            <h2>@productTest.Name</h2>
-            <p>@productTest.Price</p>
-            <p>@productTest.Quantity</p>
-        </div>
-        }
-        }*@
+        <div class="products">
+            @foreach (var item in Model)
+            {
+                    <div class="card__product">
+                        <div class="product__cover-inner">
+                            <img class="card__product_inner-img" src="~/wwwroot/img/@Html.DisplayFor(modelItem => item.Image)" 
+                                 alt="@Html.DisplayFor(modelItem => item.Name)" />
+                        </div>
+                        <div class="product-info">
+                            <h2 class="product_total">@Html.DisplayFor(modelItem => item.Name)</h2>
+                            <p class="product_cost">@Html.DisplayFor(modelItem => item.Price)</p>
+                            @if (item.Quantity == 0)
+                            {
+                                <p>Sorry, this product will be on sale soon</p>
+                                <button class="not_add_to_cart" id="haven't_product'" name="action" value="authorisation"
+                                        disabled>
+                                    Add to cart
+                                </button>
+                            }
+                            else
+                            {
+                                if (Session["user"] == null)
+                                {
+                                    using (Html.BeginForm("Authorization", "Home", FormMethod.Post))
+                                    {
+                                        <button class="not_add_to_cart" name="action" value="authorisation">Add to cart</button>
+                                    }
+
+                                }
+                                else
+                                {
+                                    <div id="div_button_@item.Id">
+                                        @using (Ajax.BeginForm("AddProductInSession", "PersonAccount", new AjaxOptions
+                                        {
+                                            UpdateTargetId = "div_button_" + item.Id,
+                                            InsertionMode = InsertionMode.Replace,
+                                            HttpMethod = "GET",
+                                            Url = "https://localhost:44319/PersonAccount/AddProductInSession"
+                                        }))
+                                        {
+                                            <input type="hidden" class="hidden_filds" name="action"
+                                                   value="add_to_cart"/>
+                                            <input type="hidden" class="hidden_filds" name="id_product"
+                                                   value="@item.Id">
+                                            <input type="hidden" class="hidden_filds" name="id_quantity" value="1">
+                                            <div class="button-inner" id="@item.Id">
+                                                <button type="submit" class="button_add_cart">Add to cart</button>
+                                            </div>
+                                        }
+                                    </div>
+                                }
+                            }
+                        </div>
+                    </div>
+            }
+            </div>
     </div>
+    <script src="~/Scrits/Cart.js"></script>
 </body>
 </html>

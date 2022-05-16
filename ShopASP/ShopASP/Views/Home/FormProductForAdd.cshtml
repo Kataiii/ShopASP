@@ -1,0 +1,18 @@
+﻿@model ShopASP.Models.Context.ModelsForDB.Product
+<div id="div_button_@Model.Id">
+    @using (Ajax.BeginForm("AddProductInSession", "PersonAccount", new AjaxOptions
+    {
+        UpdateTargetId = "div_button_" + @Model.Id,
+        InsertionMode = InsertionMode.Replace,
+        HttpMethod = "GET"
+    }))
+    {
+
+        <input type="hidden" class="hidden_filds" name="id_product"
+               value="@Model.Id">
+        <input type="hidden" class="hidden_filds" name="id_quantity" value="1">
+        <div class="button-inner" id="@Model.Id">
+            <button type="submit" class="button_add_cart" name="action" value="add_to_cart">Add to cart</button>
+        </div>
+    }
+</div>

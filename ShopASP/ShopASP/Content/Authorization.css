@@ -74,6 +74,17 @@ input {
     font-size: 32px;
 }
 
+.button__submit:hover {
+    background: linear-gradient(270deg, #010629 14.51%, #0b1c43 56.33%, #162a56 100%);
+    border: 2px solid #132c69;
+    color: #c7c7c7;
+}
+
+.button__submit.dis {
+    background: #808080;
+    border: 2px solid #808080;
+}
+
 .button_show {
     width: 30%;
     margin: 0% 0 3% 70%;
@@ -81,6 +92,12 @@ input {
     color: #1944A9;
     font-family: 'Titillium Web', sans-serif;
     font-size: 32px;
+}
+
+.button_show:hover {
+    border: 2px solid #0e2761;
+    color: #0c2359;
+    background-color: #e4e4e4
 }
 
 p {
