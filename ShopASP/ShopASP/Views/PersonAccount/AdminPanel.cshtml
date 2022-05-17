@@ -1,1 +1,157 @@
-﻿
+﻿@model ShopASP.Models.ModelForPartialView.ShopDBMain
+
+<div class="conteiner">
+    <div class="conteiner-inner">
+        <h1>Products</h1>
+        <div class="conteiner-panel">
+            <button class="btn_for_products" value="create">Create</button>
+            <button class="btn_for_products" value="update">Update</button>
+            <button class="btn_for_products" value="delete">Delete</button>
+        </div>
+        <div id="conteiner_textfields-products"></div>
+        <div class="conteiner_table">
+            <table>
+                <tr>
+                    <th>
+                        <p>Image</p>
+                    </th>
+                    <th>
+                        <p>Name</p>
+                    </th>
+                    <th>
+                        <p>Quantity</p>
+                    </th>
+                    <th>
+                        <p>Price</p>
+                    </th>
+                </tr>
+                @foreach (var item in Model.Products)
+                {
+                    <tr>
+                        <td>
+                            <img src="~/wwwroot/img/@Html.DisplayFor(modelItem => item.Image)" alt="@Html.DisplayFor(modelItem => item.Name)"/>
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Quantity)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Price)
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+
+    <div class="conteiner-inner">
+        <h1>Customers</h1>
+        <div class="conteiner-panel">
+            <button class="btn_for_customers" value="create">Create</button>
+            <button class="btn_for_customers" value="update">Update</button>
+            <button class="btn_for_customers" value="delete">Delete</button>
+        </div>
+        <div id="conteiner_textfields-customers"></div>
+        <div class="conteiner_table">
+            <table>
+                <tr>
+                    <th>
+                        <p>Surname</p>
+                    </th>
+                    <th>
+                        <p>Firstname</p>
+                    </th>
+                    <th>
+                        <p>Patronymic</p>
+                    </th>
+                    <th>
+                        <p>Phone</p>
+                    </th>
+                    <th>
+                        <p>Email</p>
+                    </th>
+                    <th>
+                        <p>IsAdmin</p>
+                    </th>
+                </tr>
+                @foreach (var item in Model.People)
+                {
+                    <tr>
+                        <td>
+                           @Html.DisplayFor(modelItem => item.Surname)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Firstname)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Patronymic)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Phone)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Email)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.IsAdmin)
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+
+    <div class="conteiner-inner">
+        <h1>Orders</h1>
+        <div class="conteiner-panel">
+            <button class="btn_for_orders" value="create">Create</button>
+            <button class="btn_for_orders" value="update">Update</button>
+            <button class="btn_for_orders" value="delete">Delete</button>
+        </div>
+        <div id="conteiner_textfields-orders"></div>
+        <div class="conteiner_table">
+            <table>
+                <tr>
+                    <th>
+                        <p>Surname</p>
+                    </th>
+                    <th>
+                        <p>Phone</p>
+                    </th>
+                    <th>
+                        <p>Name product</p>
+                    </th>
+                    <th>
+                        <p>Cost product</p>
+                    </th>
+                    <th>
+                        <p>Quantity product</p>
+                    </th>
+                </tr>
+                @foreach (var item in Model.customer_With_Orders)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.customerSurname)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.customerId)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.productName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.productCost)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.productQuantity)
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>
+

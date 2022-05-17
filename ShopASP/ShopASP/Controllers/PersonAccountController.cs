@@ -1,6 +1,7 @@
 ﻿using ShopASP.Models;
 using ShopASP.Models.Context;
 using ShopASP.Models.Context.ModelsForDB;
+using ShopASP.Models.ModelForPartialView;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -187,6 +188,7 @@ namespace ShopASP.Controllers
         {
             var productsList = (List<ProductForPerson>)Session["array_products"];
             List<ProductForPartialView> products = new List<ProductForPartialView>();
+            if (productsList == null) return PartialView("CartIsEmpty");
             foreach(ProductForPerson productForPerson in productsList)
             {
                 ProductForPartialView product = new ProductForPartialView()
@@ -202,10 +204,34 @@ namespace ShopASP.Controllers
             return PartialView("Cart", products);
         }
 
-
+        [HttpGet]
         public ActionResult ShowAdminPanel()
         {
-            return PartialView();
+            return PartialView("AdminPanel", new ShopDBMain() {
+                Products = db.Products,
+                People = db.People,
+                Orders = db.Orders,
+                customer_With_Orders = SelectCustomersWithrders()
+            });
+        }
+
+        private IQueryable<Customer_with_orders> SelectCustomersWithrders()
+        {
+            var customers_With_Orders = from o in db.Orders
+                                        join c in db.People on o.IdPerson equals c.Phone into temp1
+                                        from t1 in temp1.DefaultIfEmpty()
+                                        join p in db.Products on o.IdProduct equals p.Id into temp2
+                                        from t2 in temp2.DefaultIfEmpty()
+                                        select new Customer_with_orders
+                                        {
+                                            orderId = o.Id,
+                                            customerSurname = t1.Surname,
+                                            customerId = t1.Phone,
+                                            productName = t2.Name,
+                                            productCost = t2.Price,
+                                            productQuantity = o.Quantity
+                                        };
+            return customers_With_Orders;
         }
 
         [HttpGet]

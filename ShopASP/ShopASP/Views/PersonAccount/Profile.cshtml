@@ -45,11 +45,12 @@
                 @if (Model.IsAdmin == true)
                 {
                     @Ajax.ActionLink("Admin panel", "ShowAdminPanel", "PersonalAccount", new AjaxOptions
-                    {
-                        UpdateTargetId = "conteiner_info-inner",
-                        InsertionMode = InsertionMode.Replace,
-                        HttpMethod = "GET"
-                    })
+               {
+                   UpdateTargetId = "conteiner_info-inner",
+                   InsertionMode = InsertionMode.Replace,
+                   HttpMethod = "GET",
+                   Url = "https://localhost:44319/PersonAccount/ShowAdminPanel"
+               })
                 }
             </div>
             <div id="conteiner_info-inner">
