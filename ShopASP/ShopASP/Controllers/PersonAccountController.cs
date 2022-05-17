@@ -161,9 +161,25 @@ namespace ShopASP.Controllers
             return PartialView("Personal_information",(Person)Session["user"]);
         }
 
+        [HttpGet]
         public ActionResult GetOrdersInformation()
         {
-            return PartialView();
+            Person person = (Person)Session["user"];
+            var orders = db.Orders.Where(x => x.IdPerson == person.Phone).ToList();
+            List<ProductForPartialView> products = new List<ProductForPartialView>();
+            foreach(Order order in orders)
+            {
+                ProductForPartialView product = new ProductForPartialView()
+                {
+                    Id = order.IdProduct,
+                    Name = db.Products.Find(order.IdProduct).Name,
+                    Price = db.Products.Find(order.IdProduct).Price,
+                    Quantity = order.Quantity,
+                    QuantityMax = db.Products.Find(order.IdProduct).Quantity
+                };
+                products.Add(product);
+            }
+            return PartialView("AllOrdersPerson", products);
         }
 
         [HttpGet]
@@ -185,6 +201,7 @@ namespace ShopASP.Controllers
             }
             return PartialView("Cart", products);
         }
+
 
         public ActionResult ShowAdminPanel()
         {

@@ -14,5 +14,7 @@ namespace ShopASP.Models.Context
         public DbSet<Order> Orders { get; set; }
 
         public System.Data.Entity.DbSet<ShopASP.Models.ProductForPerson> ProductForPersons { get; set; }
+
+        public System.Data.Entity.DbSet<ShopASP.Models.ProductForPartialView> ProductForPartialViews { get; set; }
     }
 }

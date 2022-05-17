@@ -145,6 +145,7 @@
     <Compile Include="Models\Context\ModelsForDB\Order.cs" />
     <Compile Include="Models\Context\ModelsForDB\Person.cs" />
     <Compile Include="Models\Context\ModelsForDB\Product.cs" />
+    <Compile Include="Models\Context\PersonWithOrders.cs" />
     <Compile Include="Models\Context\ShopDB.cs" />
     <Compile Include="Models\ModelsForPages\PersonWithProducts.cs" />
     <Compile Include="Models\OrderForCart.cs" />
@@ -172,11 +173,12 @@
     <Content Include="Views\PersonAccount\UpdateProductInSession.cshtml" />
     <Content Include="Views\PersonAccount\Profile.cshtml" />
     <Content Include="Views\PersonAccount\Personal_information.cshtml" />
-    <Content Include="Views\PersonAccount\AllOrdersPerson.cshtml" />
     <Content Include="Views\PersonAccount\Cart.cshtml" />
     <Content Include="Views\PersonAccount\ReduceQuantityProductCart.cshtml" />
     <Content Include="Views\PersonAccount\AddQuantityProductCart.cshtml" />
     <Content Include="Views\PersonAccount\Messege.cshtml" />
+    <Content Include="Views\PersonAccount\AdminPanel.cshtml" />
+    <Content Include="Views\PersonAccount\AllOrdersPerson.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
