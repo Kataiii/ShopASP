@@ -30,9 +30,12 @@
 
                 <div class="conteiner__account">
                     <div class="conteiner__icon">
-                        <button class="button-icon" id="cart" style="margin:0;"><img src="~/Resourses/Basket.svg" /></button>
-                        <p id="cart" class="title-icon">Корзина</p>
-                    </div>
+                        @using (Html.BeginForm("Profile", "PersonAccount", FormMethod.Get))
+                        {
+                            <button class="button-icon" id="cart" style="margin:0;"><img src="~/Resourses/Basket.svg" /></button>
+                        }
+                            <p id="cart" class="title-icon">Корзина</p>
+                        </div>
                     <p id="counter"></p>
                     <div class="conteiner__icon">
                         @using(Html.BeginForm("Profile", "PersonAccount", FormMethod.Get))
@@ -95,7 +98,7 @@
                                                    value="@item.Id">
                                             <input type="hidden" class="hidden_filds" name="id_quantity" value="1">
                                             <div class="button-inner" id="@item.Id">
-                                                <button type="submit" class="button_add_cart">Add to cart</button>
+                                                <button type="submit" class="button_add_cart" value="@item.Id">Add to cart</button>
                                             </div>
                                         }
                                     </div>

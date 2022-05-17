@@ -21,10 +21,13 @@
     {
         <header>
             <div class="header__conteiner">
-                <button class="header__logo">Shop</button>
+                @using(Html.BeginForm("MainPage", "Home", FormMethod.Post, new { @style = "margin: auto 0;" }))
+                {
+                    <button class="header__logo">Shop</button>
+                }
                 <div class="conteiner__account">
-                    <div class="conteiner__icon">
-                        <button class="button-icon" id="basket" style="margin:0;"><img src="~/Resourses/Basket.svg" /></button>
+                    <div class="conteiner__icon" >
+                        <button class="button-icon" id="basket" style="width:100%"><img src="~/Resourses/Basket.svg" style="margin-left: -15%;"/></button>
                         <p class="title-icon">Корзина</p>
                     </div>
                     <div class="conteiner__icon">

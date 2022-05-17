@@ -111,11 +111,12 @@
                 InsertionMode = InsertionMode.Replace,
                 HttpMethod = "GET",
                 Url = "https://localhost:44319/PersonAccount/AddOrder"
-            }))
+            }, new { @id = "form_submit" }))
             {
                 <button type="submit" id="btn_cart">Place an order</button>
             }
         </div>
     </div>
+    <script src="~/Scrits/Cart.js"></script>
 </body>
 

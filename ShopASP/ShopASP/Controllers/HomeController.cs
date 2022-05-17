@@ -12,6 +12,12 @@ namespace ShopASP.Controllers
     public class HomeController : Controller
     {
         ShopDB db = new ShopDB();
+
+        [HttpPost]
+        public ActionResult MainPage()
+        {
+            return View(db.Products);
+        }
         // GET: Home
         public ActionResult MainPage(List<Product> products)
         {

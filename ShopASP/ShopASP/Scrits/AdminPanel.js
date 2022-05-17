@@ -3,15 +3,12 @@ let conteiner_customers = document.getElementById("conteiner_textfields-customer
 let conteiner_orders = document.getElementById("conteiner_textfields-orders");
 
 let btns_for_prod = document.querySelectorAll(".btn_for_products");
-let btns_for_cus = document.querySelectorAll(".btn_for_customers");
-let btns_for_ord = document.querySelectorAll(".btn_for_orders");
 
 for (let i = 0; i < btns_for_prod.length; i++) {
     btns_for_prod[i].onclick = function () {
         addInConteinProd(btns_for_prod[i].value);
     }
 }
-
 
 
 function addInConteinProd(value) {

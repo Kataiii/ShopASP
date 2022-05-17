@@ -60,11 +60,6 @@
 
         <div class="conteiner-inner-admin">
             <h1 class="admin_title">Customers</h1>
-            <div class="conteiner-panel">
-                <button class="btn_for_customers" value="create">Create</button>
-                <button class="btn_for_customers" value="update">Update</button>
-                <button class="btn_for_customers" value="delete">Delete</button>
-            </div>
             <div id="conteiner_textfields-customers"></div>
             <div class="conteiner_table">
                 <table>
@@ -86,6 +81,9 @@
                         </th>
                         <th>
                             <p>IsAdmin</p>
+                        </th>
+                        <th>
+                            <p>Add/Delete admin</p>
                         </th>
                     </tr>
                     @foreach (var item in Model.People)
@@ -109,6 +107,19 @@
                             <td>
                                 @Html.DisplayFor(modelItem => item.IsAdmin)
                             </td>
+                            <td>
+                                @using (Ajax.BeginForm("UpdatePerson", "PersonalAccount", new AjaxOptions
+                                {
+                                    UpdateTargetId = "conteiner_info-inner",
+                                    InsertionMode = InsertionMode.Replace,
+                                    HttpMethod = "GET",
+                                    Url = "https://localhost:44319/PersonAccount/UpdatePerson"
+                                }))
+                                {
+                                    <input type="hidden" class="hidden_filds" name="id" value="@item.Phone">
+                                    <button type="submit">Update</button>
+                                }
+                            </td>
                         </tr>
                     }
                 </table>
@@ -118,9 +129,6 @@
         <div class="conteiner-inner-admin">
             <h1 class="admin_title">Orders</h1>
             <div class="conteiner-panel">
-                <button class="btn_for_orders" value="create">Create</button>
-                <button class="btn_for_orders" value="update">Update</button>
-                <button class="btn_for_orders" value="delete">Delete</button>
             </div>
             <div id="conteiner_textfields-orders"></div>
             <div class="conteiner_table">

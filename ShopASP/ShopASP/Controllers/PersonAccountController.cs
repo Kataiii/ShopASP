@@ -346,5 +346,20 @@ namespace ShopASP.Controllers
             }
             return ShowAdminPanel();
         }
+
+        public ActionResult UpdatePerson(string id)
+        {
+            if (id == "")
+            {
+                return HttpNotFound();
+            }
+            Person person = db.People.Find(id);
+            if(person == null) return HttpNotFound();
+            if (person.IsAdmin == true) person.IsAdmin = false;
+            else person.IsAdmin = true;
+            db.Entry(person).State = EntityState.Modified;
+            db.SaveChanges();
+            return ShowAdminPanel();
+        }
     }
 }
