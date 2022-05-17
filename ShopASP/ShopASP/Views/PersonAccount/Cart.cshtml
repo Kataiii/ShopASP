@@ -1,112 +1,121 @@
 ﻿@model IEnumerable<ShopASP.Models.ProductForPartialView>
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Quantity)
-        </th>
-        <th>
-            <p></p>
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Price)
-        </th>
-        <th></th>
-        <th>Total amount</th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Quantity)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Price)
-        </td>
-        <td>
-            <div class="button-inner" id="@item.Id">
-                @using (Ajax.BeginForm("ReduceQuantityProductCart", "PersonAccount", new AjaxOptions
-                {
-                    UpdateTargetId = "conteiner_info-inner",
-                    InsertionMode = InsertionMode.Replace,
-                    HttpMethod = "GET",
-                    Url = "https://localhost:44319/PersonAccount/ReduceQuantityProductCart"
-                }))
-                {
-                    <input type="hidden" class="hidden_filds" name="id_product"
-                           value="@item.Id">
-                    <input type="hidden" class="hidden_filds" name="id_quantity" value="@item.Quantity">
+<head>
+    <link rel="stylesheet" type="text/css" href="~/Content/TableOrders.css"/>
+</head>
+<body>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Quantity)
+            </th>
+            <th>
+                <p></p>
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th></th>
+            <th>Total amount</th>
+        </tr>
 
-                    if (item.Quantity == 1)
-                    {
-                        <button type="submit" class="button-dissabled" name="action" value="reduce_quantity" disabled>-</button>
-                    }
-                    else
-                    {
-                        <button type="submit" class="button-quantity" name="action" value="reduce_quantity">-</button>
-                    }
-                }
-                <input type="text" class="input_quantity" id="value_quantity" value="@item.Quantity">
-                @using (Ajax.BeginForm("AddQuantityProductCart", "PersonAccount", new AjaxOptions
-                {
-                    UpdateTargetId = "conteiner_info-inner",
-                    InsertionMode = InsertionMode.Replace,
-                    HttpMethod = "GET",
-                    Url = "https://localhost:44319/PersonAccount/AddQuantityProductCart"
-                }))
-                {
-                    <input type="hidden" class="hidden_filds" name="id_product"
-                           value="@item.Id">
-                    <input type="hidden" class="hidden_filds" name="id_quantity" value="@item.Quantity">
-                    if (item.QuantityMax == item.Quantity)
-                    {
-                        <button name="action" class="button-dissabled" value="add_quantity" disabled>+</button>
-                    }
-                    else
-                    {
-                        <button name="action" class="button-quantity" type="submit" value="add_quantity">+</button>
-                    }
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Quantity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    <div class="button-inner" id="@item.Id">
+                        @using (Ajax.BeginForm("ReduceQuantityProductCart", "PersonAccount", new AjaxOptions
+                        {
+                            UpdateTargetId = "conteiner_info-inner",
+                            InsertionMode = InsertionMode.Replace,
+                            HttpMethod = "GET",
+                            Url = "https://localhost:44319/PersonAccount/ReduceQuantityProductCart"
+                        }))
+                        {
+                            <input type="hidden" class="hidden_filds" name="id_product"
+                                   value="@item.Id">
+                            <input type="hidden" class="hidden_filds" name="id_quantity" value="@item.Quantity">
 
-                }
-            </div>
-        </td>
-        <td>
-            @using (Ajax.BeginForm("Delete", "PersonalAccount", new AjaxOptions
+                            if (item.Quantity == 1)
+                            {
+                                <button type="submit" class="button-dissabled" name="action" value="reduce_quantity" disabled>-</button>
+                            }
+                            else
+                            {
+                                <button type="submit" class="button-quantity" name="action" value="reduce_quantity">-</button>
+                            }
+                        }
+                        <input type="text" class="input_quantity" id="value_quantity" value="@item.Quantity">
+                        @using (Ajax.BeginForm("AddQuantityProductCart", "PersonAccount", new AjaxOptions
+                        {
+                            UpdateTargetId = "conteiner_info-inner",
+                            InsertionMode = InsertionMode.Replace,
+                            HttpMethod = "GET",
+                            Url = "https://localhost:44319/PersonAccount/AddQuantityProductCart"
+                        }))
+                        {
+                            <input type="hidden" class="hidden_filds" name="id_product"
+                                   value="@item.Id">
+                            <input type="hidden" class="hidden_filds" name="id_quantity" value="@item.Quantity">
+                            if (item.QuantityMax == item.Quantity)
+                            {
+                                <button name="action" class="button-dissabled" value="add_quantity" disabled>+</button>
+                            }
+                            else
+                            {
+                                <button name="action" class="button-quantity" type="submit" value="add_quantity">+</button>
+                            }
+
+                        }
+                    </div>
+                </td>
+                <td>
+                    @using (Ajax.BeginForm("Delete", "PersonalAccount", new AjaxOptions
+                    {
+                        UpdateTargetId = "conteiner_info-inner",
+                        InsertionMode = InsertionMode.Replace,
+                        HttpMethod = "GET",
+                        Url = "https://localhost:44319/PersonAccount/Delete"
+                    }))
+                    {
+                        <input type="hidden" class="hidden_filds" name="id" value="@item.Id">
+                        <button type="submit">Delete</button>
+                    }
+                </td>
+                <td class="td_sum">@item.Sum(item.Quantity, item.Price)</td>
+            </tr>
+        }
+    </table>
+    <div class="conteiner-cart">
+        <p>Total order amount: </p>
+        <p id="total_sum">
+            @Model.ToList()[0].TotalSum(Model.ToList());
+        </p>
+        <div>
+            @using (Ajax.BeginForm("AddOrder", "PersonalAccount", new AjaxOptions
             {
                 UpdateTargetId = "conteiner_info-inner",
                 InsertionMode = InsertionMode.Replace,
                 HttpMethod = "GET",
-                Url = "https://localhost:44319/PersonAccount/Delete"
-            })) {
-                <input type="hidden" class="hidden_filds" name="id" value="@item.Id">
-                <button type="submit" >Delete</button>
-            }
-        </td>
-        <td class="td_sum">@item.Sum(item.Quantity, item.Price)</td>
-    </tr>
-}
-</table>
-<div>
-    <p>Total order amount: </p>
-    <p id="total_sum">
-        @Model.ToList()[0].TotalSum(Model.ToList());
-    </p>
-    <div>
-        @using (Ajax.BeginForm("AddOrder", "PersonalAccount", new AjaxOptions
-        {
-            UpdateTargetId = "conteiner_info-inner",
-            InsertionMode = InsertionMode.Replace,
-            HttpMethod = "GET",
-            Url = "https://localhost:44319/PersonAccount/AddOrder"
-        }))
-        {
-                <button type="submit">Place an order</button>
+                Url = "https://localhost:44319/PersonAccount/AddOrder"
+            }))
+            {
+                <button type="submit" id="btn_cart">Place an order</button>
             }
         </div>
-</div>
+    </div>
+</body>
+

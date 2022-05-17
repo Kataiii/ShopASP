@@ -297,5 +297,54 @@ namespace ShopASP.Controllers
             Session["array_products"] = null;
             return PartialView("Messege");
         }
+
+        //For Db and Panel Admin 
+        [HttpGet]
+        public ActionResult AddProductinDB(string name_prod, int quantity_prod, string image_prod, string price_prod)
+        {
+            Product product = new Product()
+            {
+                Id = 1,
+                Name = name_prod,
+                Quantity = quantity_prod,
+                Image = image_prod,
+                Price = decimal.Parse(price_prod)
+            };
+            db.Products.Add(product);
+            db.SaveChanges();
+            return ShowAdminPanel();
+        }
+        public ActionResult UpdateProductinDB(int id_prod,string name_prod, string quantity_prod, string image_prod, string price_prod)
+        {
+            if (id_prod == 0)
+            {
+                return HttpNotFound();
+            }
+            Product product = db.Products.Find(id_prod);
+            if (product == null) return HttpNotFound();
+            if (name_prod != "") product.Name = name_prod;
+            if (quantity_prod != "") { product.Quantity = int.Parse(quantity_prod); }
+            if (image_prod != "") product.Image = image_prod;
+            if (price_prod != "") product.Price = decimal.Parse(price_prod);
+            
+            db.Entry(product).State = EntityState.Modified;
+            db.SaveChanges();
+            return ShowAdminPanel();
+        }
+
+        public ActionResult DeleteProductinDB(int id_prod)
+        {
+            if (id_prod == 0)
+            {
+                return HttpNotFound();
+            }
+            Product product = db.Products.Find(id_prod);
+            if (product != null)
+            {
+                db.Products.Remove(product);
+                db.SaveChanges();
+            }
+            return ShowAdminPanel();
+        }
     }
 }
